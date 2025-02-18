@@ -93,6 +93,8 @@ type JokeCardProps = {
   data: string;
   refresh: boolean;
   onGoTop: (index: number) => void;
+  showDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  msg: React.Dispatch<React.SetStateAction<string>>;
 };
 
 type Flags = {
@@ -114,7 +116,7 @@ type Joke = {
   lang: string;
 };
 
-const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh, onGoTop }) => {
+const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh, onGoTop, showDialog, msg }) => {
   const [childData, setChildData] = useState<Joke[]>([]);
   const [childOpen, setChildOpen] = useState(false);
   const [amount, setAmount] = useState(0);
@@ -143,6 +145,11 @@ const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh, onGoTop }) =>
       setChildData([...childData, ...res]);
     }
   };
+
+  const handleClickChild = (joke: string) => {
+    msg(joke);
+    showDialog(true);
+  }
 
   const addMoreJokes = () => {
     setAmount(amount + 1);
@@ -174,9 +181,9 @@ const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh, onGoTop }) =>
         <View>
           {childData.map((d, i) => {
             return (
-              <View key={i} style={styles.childListContainer}>
+              <TouchableOpacity onPress={() => {handleClickChild(d.joke)}} key={i} style={styles.childListContainer}>
                 <Text style={styles.childText}>{d.joke}</Text>
-              </View>
+              </TouchableOpacity>
             );
           })}
 

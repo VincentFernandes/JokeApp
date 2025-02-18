@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { RefreshControl, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getCategories } from "../services/api";
+import Dialog from "react-native-dialog";
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -33,7 +34,8 @@ const styles = StyleSheet.create({
 const Index = () => {
   const [categories, setCategories] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const [child, setChild] = useState([]);
+  const [showDialog, setShowDialog] = useState(false);
+  const [dialogMsg, setDialogMsg] = useState('');
 
   useEffect(() => {
     fetchCategories();
@@ -59,6 +61,10 @@ const Index = () => {
     }
   }
 
+  const handleClose = () => {
+    setShowDialog(false);
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar backgroundColor="#0091ff" />
@@ -67,10 +73,15 @@ const Index = () => {
         <Text style={styles.subtitle}>All Jokes</Text>
         <View style={styles.jokesContainer}>
           {categories.map((d, i) => {
-            return <JokeCard key={d} index={i+1} data={d} refresh={refresh} onGoTop={goTop} />;
+            return <JokeCard key={d} index={i+1} data={d} refresh={refresh} onGoTop={goTop} showDialog={setShowDialog} msg={setDialogMsg} />;
           })}
         </View>
       </ScrollView>
+
+      <Dialog.Container visible={showDialog}>
+        <Dialog.Description style={{ color: '#181818' }}>{dialogMsg}</Dialog.Description>
+        <Dialog.Button label='Close' onPress={handleClose} />
+      </Dialog.Container>
     </SafeAreaView>
   );
 };
