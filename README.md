@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/d1f0d36a-f3d2-4940-bb4a-7184b1b408da)# JokeApp
+# JokeApp
 
 this is an App that created to complete the test from Jakmall.
 
