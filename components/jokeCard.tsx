@@ -92,6 +92,7 @@ type JokeCardProps = {
   index: number;
   data: string;
   refresh: boolean;
+  onGoTop: (index: number) => void;
 };
 
 type Flags = {
@@ -113,7 +114,7 @@ type Joke = {
   lang: string;
 };
 
-const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh }) => {
+const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh, onGoTop }) => {
   const [childData, setChildData] = useState<Joke[]>([]);
   const [childOpen, setChildOpen] = useState(false);
   const [amount, setAmount] = useState(0);
@@ -163,7 +164,7 @@ const JokeCard: React.FC<JokeCardProps> = ({ index, data, refresh }) => {
             <Text style={styles.btnText}>Top</Text>
           </View>
         ) : (
-          <TouchableOpacity style={styles.btngoTop}>
+          <TouchableOpacity onPress={() => {onGoTop(index)}} style={styles.btngoTop}>
             <Text style={styles.btngoTopText}>Go Top</Text>
           </TouchableOpacity>
         )}

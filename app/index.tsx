@@ -50,6 +50,15 @@ const Index = () => {
     setRefresh(false)
   }
 
+  const goTop = (index: number) => {
+    if(index > 0){
+      const temp = [...categories];
+      const [current] = temp.splice(index - 1, 1);
+      temp.splice(index - 2, 0, current);
+      setCategories(temp);
+    }
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar backgroundColor="#0091ff" />
@@ -58,7 +67,7 @@ const Index = () => {
         <Text style={styles.subtitle}>All Jokes</Text>
         <View style={styles.jokesContainer}>
           {categories.map((d, i) => {
-            return <JokeCard key={d} index={i+1} data={d} refresh={refresh} />;
+            return <JokeCard key={d} index={i+1} data={d} refresh={refresh} onGoTop={goTop} />;
           })}
         </View>
       </ScrollView>
