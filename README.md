@@ -16,17 +16,5 @@ this is an App that created to complete the test from Jakmall.
 # 4. Remove "Add More Button" when clicked 2 times
 ![cnpt](https://media.discordapp.net/attachments/960081828541255693/1341359902437802046/Screenshot_20250218_174517_Expo_Go.png?ex=67b5b642&is=67b464c2&hm=dc22b737e964b4d0d609abfe3cf983386559dd050daed18f6e55a36bbe7df11d&=&format=webp&quality=lossless&width=448&height=910)
 
-
-# How To Run The Project? 
-
-To run this project.
-
-Clone this repository - 
-```sh
-git clone https://github.com/VincentFernandes/jokeApp.git
-```
-
-Go inside the project folder and run this command:
-```sh
-npx expo start
-```
+# 4. Add Dialog when joke clicked
+![cnpt](https://media.discordapp.net/attachments/960081828541255693/1341650599015485470/Screenshot_20250219_130015_Expo_Go.png?ex=67b6c4fd&is=67b5737d&hm=8b92bb5d5a5d8e406ba3937b7c476263439af7046f1c873a8fc23dafc907a327&=&format=webp&quality=lossless&width=489&height=993)
